@@ -11,6 +11,7 @@
         bool CanMove { get; }
         Rect Bounds { get; }
         Task<Rect> GetBounds();
+        Task<Rect> GetClientBounds();
         string Title { get; }
         Task<Exception> Activate();
         Task<Exception> BringToFront();
