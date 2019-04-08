@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="HockeySDK.Community.Core" Version="4.1.7-pre0" />
-    <PackageReference Include="JetBrains.Annotations" Version="2018.2.1" />
+    <PackageReference Include="JetBrains.Annotations" Version="2019.1.1" />
     <PackageReference Include="System.Drawing.Primitives" Version="4.3.0" />
   </ItemGroup>
 
