@@ -6,18 +6,19 @@
     using System.Globalization;
     using System.Threading.Tasks;
     using JetBrains.Annotations;
-    using Microsoft.HockeyApp;
+    using Microsoft.AppCenter.Crashes;
 
     public static class WarningExtensions
     {
         public static void ReportAsWarning(this Exception exception, string prefix = "Warning: ") {
             if (exception != null) {
-                string message = prefix + exception.Message;
-                HockeyClient.Current.TrackTrace(message, SeverityLevel.Warning, properties: new SortedDictionary<string, string> {
+                Crashes.TrackError(exception, properties: new SortedDictionary<string, string> {
                     [nameof(exception.StackTrace)] = exception.StackTrace,
                     [nameof(exception.Source)] = exception.Source,
                     [nameof(exception.HResult)] = exception.HResult.ToString(CultureInfo.InvariantCulture),
                     [nameof(exception.InnerException)] = exception.InnerException?.ToString(),
+                    ["IsWarning"] = "true",
+                    ["Prefix"] = prefix,
                 });
             }
         }
