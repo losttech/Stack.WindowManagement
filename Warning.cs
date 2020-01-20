@@ -1,47 +1,30 @@
-﻿namespace LostTech.Stack.Utils
+﻿namespace LostTech.Stack.WindowManagement
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Globalization;
+    using System.Threading;
     using System.Threading.Tasks;
-    using JetBrains.Annotations;
-    using Microsoft.AppCenter.Crashes;
+    using LostTech.App;
 
     public static class WarningExtensions
     {
-        public static void ReportAsWarning(this Exception exception, string prefix = "Warning: ") {
-            if (exception != null) {
-                Crashes.TrackError(exception, properties: new SortedDictionary<string, string> {
-                    [nameof(exception.StackTrace)] = exception.StackTrace,
-                    [nameof(exception.Source)] = exception.Source,
-                    [nameof(exception.HResult)] = exception.HResult.ToString(CultureInfo.InvariantCulture),
-                    [nameof(exception.InnerException)] = exception.InnerException?.ToString(),
-                    ["IsWarning"] = "true",
-                    ["Prefix"] = prefix,
-                });
+        static IWarningsService? warningsService;
+
+        public static IWarningsService WarningsService {
+            get => warningsService ?? throw new InvalidOperationException($"{nameof(WarningsService)} is not initialized.");
+            set {
+                if (value is null)
+                    throw new ArgumentNullException(nameof(WarningsService));
+                if (Interlocked.CompareExchange(ref warningsService, value, null) != null)
+                    throw new InvalidOperationException();
             }
         }
 
-        public static void ReportAsWarning([NotNull] this Task<Exception> potentiallyFailingTask, string prefix = "Warning: ") {
-            if (potentiallyFailingTask == null)
-                throw new ArgumentNullException(nameof(potentiallyFailingTask));
-            potentiallyFailingTask.ContinueWith(t => {
-                if (t.IsFaulted)
-                    t.Exception.ReportAsWarning(prefix);
-                if (t.IsCompleted)
-                    t.Result.ReportAsWarning(prefix);
-            });
-        }
-
-        public static void ReportAsWarning([NotNull] this Task potentiallyFailingTask, string prefix = "Warning: ")
-        {
-            if (potentiallyFailingTask == null)
-                throw new ArgumentNullException(nameof(potentiallyFailingTask));
-            potentiallyFailingTask.ContinueWith(t => {
-                if (t.IsFaulted)
-                    t.Exception.ReportAsWarning(prefix);
-            });
-        }
+        public static void ReportAsWarning(this Exception exception, string prefix = "Warning: ")
+            => WarningsService.ReportAsWarning(exception, prefix);
+        public static void ReportAsWarning(this Task<Exception> potentiallyFailingTask, string prefix = "Warning: ")
+            => WarningsService.ReportAsWarning(potentiallyFailingTask, prefix);
+        public static void ReportAsWarning(this Task potentiallyFailingTask, string prefix = "Warning: ")
+            => WarningsService.ReportAsWarning(potentiallyFailingTask, prefix);
     }
 }
