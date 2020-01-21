@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <PackageReference Include="System.Drawing.Primitives" Version="4.3.0" />
-    <PackageReference Include="LostTech.App.Boilerplate" Version="0.1.0" />
   </ItemGroup>
 
 </Project>
