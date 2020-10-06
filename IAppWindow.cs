@@ -20,6 +20,7 @@
         bool IsVisible { get; }
         bool IsOnCurrentDesktop { get; }
         bool IsVisibleOnAllDesktops { get; }
+        bool IsVisibleInAppSwitcher { get; }
         event EventHandler Closed;
     }
 }
