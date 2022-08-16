@@ -5,12 +5,12 @@
     <AssemblyName>LostTech.Stack.WindowManagement</AssemblyName>
     <VersionPrefix>2.0.1</VersionPrefix>
     <RootNamespace>LostTech.Stack.WindowManagement</RootNamespace>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>10.0</LangVersion>
     <Nullable>enable</Nullable>
 
     <Product>Stack</Product>
     <Company>Lost Tech LLC</Company>
-    <Copyright>© Lost Tech LLC 2020</Copyright>
+    <Copyright>© Lost Tech LLC 2022</Copyright>
 
     <!-- The following is recommended for public projects -->
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
@@ -22,7 +22,7 @@
   <ItemGroup>
     <PackageReference Include="System.Drawing.Primitives" Version="4.3.0" />
     <!-- The following is recommended for public projects -->
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
   </ItemGroup>
 
 </Project>
