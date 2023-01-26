@@ -7,10 +7,10 @@
 
         public WindowNotFoundException() : base(DefaultMessage) { }
 
-        public WindowNotFoundException(string message, Exception innerException):
+        public WindowNotFoundException(string message, Exception? innerException):
             base(message, innerException) { }
 
-        public WindowNotFoundException(Exception innerException):
+        public WindowNotFoundException(Exception? innerException):
             base(DefaultMessage, innerException: innerException) { }
     }
 }
