@@ -3,14 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>LostTech.Stack.WindowManagement</AssemblyName>
-    <VersionPrefix>3.0.0-clean</VersionPrefix>
+    <VersionPrefix>3.0.1-clean</VersionPrefix>
     <RootNamespace>LostTech.Stack.WindowManagement</RootNamespace>
-    <LangVersion>10.0</LangVersion>
+    <LangVersion>11.0</LangVersion>
     <Nullable>enable</Nullable>
 
     <Product>Stack</Product>
     <Company>Lost Tech LLC</Company>
-    <Copyright>© Lost Tech LLC 2022</Copyright>
+    <Copyright>© Lost Tech LLC 2023</Copyright>
 
     <!-- The following is recommended for public projects -->
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
