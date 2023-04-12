@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>LostTech.Stack.WindowManagement</AssemblyName>
-    <VersionPrefix>3.0.1-clean</VersionPrefix>
+    <VersionPrefix>3.0.2-a0</VersionPrefix>
     <RootNamespace>LostTech.Stack.WindowManagement</RootNamespace>
     <LangVersion>11.0</LangVersion>
     <Nullable>enable</Nullable>
